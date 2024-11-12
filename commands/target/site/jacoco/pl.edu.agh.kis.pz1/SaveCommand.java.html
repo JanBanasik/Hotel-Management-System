@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SaveCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">commands</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1</a> &gt; <span class="el_source">SaveCommand.java</span></div><h1>SaveCommand.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.QuoteMode;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Scanner;
+
+/**
+ * A command that saves the current state of the {@link Hotel} into a CSV file.
+ * The saved file includes all room details, such as room number, description, price,
+ * main guest, additional guests, check-in date, capacity, and duration of stay.
+ */
+<span class="fc" id="L17">public class SaveCommand extends Command {</span>
+
+    /**
+     * Executes the save command, which prompts the user for a filename and writes the
+     * hotel's current state to a CSV file in the specified location.
+     *
+     * @param hotel the {@link Hotel} object whose state is to be saved
+     */
+    @Override
+    public void execute(Hotel hotel) {
+<span class="fc" id="L27">        Scanner sc = new Scanner(System.in);</span>
+<span class="fc" id="L28">        System.out.println(&quot;Podaj nazwe pliku, do ktorego chcesz zapisac aktualny stan: &quot;);</span>
+<span class="fc" id="L29">        String filename = sc.nextLine();</span>
+<span class="fc" id="L30">        String filepath = &quot;./&quot; + filename + &quot;.csv&quot;;</span>
+
+        try (
+<span class="fc" id="L33">                Writer out = new FileWriter(filepath);</span>
+<span class="fc" id="L34">                CSVPrinter csvPrinter = new CSVPrinter(out,</span>
+<span class="fc" id="L35">                        CSVFormat.DEFAULT.builder()</span>
+<span class="fc" id="L36">                                .setQuoteMode(QuoteMode.MINIMAL)</span>
+<span class="fc" id="L37">                                .setHeader(&quot;nr_pokoju&quot;, &quot;opis&quot;, &quot;cena&quot;, &quot;GoscGlowny&quot;, &quot;DodatkowiGoscie&quot;,</span>
+<span class="fc" id="L38">                                        &quot;DataZameldowania&quot;, &quot;Pojemnosc&quot;, &quot;CzasTrwaniaPobytu&quot;).build())</span>
+        ) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            for (String key : hotel.rooms.keys()) {</span>
+<span class="fc" id="L41">                csvPrinter.printRecord(</span>
+                        key,
+<span class="fc" id="L43">                        hotel.get(key).opis,</span>
+<span class="fc" id="L44">                        hotel.get(key).cena,</span>
+<span class="fc" id="L45">                        hotel.get(key).goscGlowny,</span>
+<span class="fc" id="L46">                        hotel.get(key).goscieDodatkowi,</span>
+<span class="fc" id="L47">                        hotel.get(key).dataZameldowania,</span>
+<span class="fc" id="L48">                        hotel.get(key).pojemnosc,</span>
+<span class="fc" id="L49">                        hotel.get(key).czasTrwaniaPobytu</span>
+                );
+<span class="fc" id="L51">            }</span>
+<span class="nc" id="L52">        } catch (IOException e) {</span>
+<span class="nc" id="L53">            System.out.println(&quot;Nie udalo sie zapisac do pliku!&quot;);</span>
+<span class="fc" id="L54">        }</span>
+<span class="fc" id="L55">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CheckinCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">commands</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1</a> &gt; <span class="el_source">CheckinCommand.java</span></div><h1>CheckinCommand.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1;
+
+import java.util.Scanner;
+
+/**
+ * A command class for handling the check-in process in a hotel.
+ * This class interacts with the user to gather necessary information
+ * about the room, main guest, additional guests, check-in date, and stay duration.
+ */
+<span class="fc" id="L10">public class CheckinCommand extends Command {</span>
+
+    /**
+     * Executes the check-in process for a specified room in the hotel.
+     * The method prompts the user for input to:
+     * - Specify the room number to be checked in.
+     * - Provide the main guest's name.
+     * - Optionally add additional guests.
+     * - Set the check-in date.
+     * - Specify the number of days for the stay.
+     * The method performs validation to ensure:
+     * - The room number is valid and exists in the hotel.
+     * - The room is not already occupied.
+     *
+     * @param hotel the {@link Hotel} object containing room details
+     */
+    @Override
+    public void execute(Hotel hotel) {
+<span class="fc" id="L28">        Scanner sc = new Scanner(System.in);</span>
+
+        // Prompt for room number
+<span class="fc" id="L31">        System.out.print(&quot;Enter room number: &quot;);</span>
+<span class="fc" id="L32">        String roomNumber = sc.nextLine();</span>
+
+        // Validate room number
+<span class="fc" id="L35">        System.out.println(hotel.rooms.keys());</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if (!hotel.rooms.contains(roomNumber)) {</span>
+<span class="nc" id="L37">            System.out.println(&quot;Invalid room number!&quot;);</span>
+<span class="nc" id="L38">            return;</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        } else if (!hotel.get(roomNumber).goscGlowny.isEmpty()) {</span>
+<span class="nc" id="L40">            System.out.println(&quot;This room is already occupied by: &quot; + hotel.get(roomNumber).goscGlowny);</span>
+<span class="nc" id="L41">            return;</span>
+        }
+
+        // Get main guest's name
+        String goscGlowny;
+        do {
+<span class="fc" id="L47">            System.out.println(&quot;Podaj goscia głownego:&quot;);</span>
+<span class="fc" id="L48">            goscGlowny = sc.nextLine();</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        } while (goscGlowny.isEmpty());</span>
+
+        // Get additional guests
+<span class="fc" id="L52">        StringBuilder goscieDodatkowi = new StringBuilder();</span>
+<span class="fc" id="L53">        System.out.println(&quot;Podaj gosci dodatkowych lub q jezeli chcesz przerwac&quot;);</span>
+        String temp;
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">        for (int i = 0; i &lt; Integer.parseInt(hotel.get(roomNumber).pojemnosc) - 1; i++) {</span>
+<span class="fc" id="L56">            System.out.println(&quot;Podaj goscia dodatkowego: &quot;);</span>
+<span class="fc" id="L57">            temp = sc.nextLine();</span>
+<span class="pc bpc" id="L58" title="2 of 4 branches missed.">            if (temp.equals(&quot;q&quot;) || temp.isEmpty()) break;</span>
+<span class="nc" id="L59">            goscieDodatkowi.append(temp).append(&quot; &quot;);</span>
+        }
+
+        // Update room details
+<span class="fc" id="L63">        hotel.get(roomNumber).goscGlowny = goscGlowny;</span>
+<span class="fc" id="L64">        hotel.get(roomNumber).goscieDodatkowi = goscieDodatkowi.toString().trim();</span>
+
+        // Get check-in date
+<span class="fc" id="L67">        System.out.println(&quot;Podaj date zameldowania (w formacie dd.mm.yyyy):&quot;);</span>
+<span class="fc" id="L68">        hotel.get(roomNumber).dataZameldowania = DateParser.convert(sc.nextLine());</span>
+
+        // Get stay duration
+<span class="fc" id="L71">        System.out.println(&quot;Podaj ilosc dni pobytu: &quot;);</span>
+<span class="fc" id="L72">        hotel.get(roomNumber).czasTrwaniaPobytu = sc.nextLine();</span>
+<span class="fc" id="L73">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,0 +1,30 @@
+nr_pokoju,opis,cena,GoscGlowny,DodatkowiGoscie,DataZameldowania,Pojemnosc,CzasTrwaniaPobytu
+101,VIP,100,John Smith,Sarah Smith,2024-11-10,4,4
+102,VIP,100,Sarah Johnson,,,4,
+103,Deluxe,75,John Thompson,Linda Thompson Alex A,2024-11-08,3,6
+104,VIP,100,,,,4,
+201,Normal,20,John Brown,Sarah Brown,2024-11-12,2,
+202,Normal,20,Michael Green,,,2,9
+203,Normal,20,Sarah Adams,,,2,8
+204,Normal,20,Sarah Wilson,John Wilson,2024-11-12,2,
+205,Normal,20,John Black,Sarah Black,2024-11-12,2,
+206,Normal,20,,,,2,
+301,Normal+,35,John Taylor,,,2,
+302,Normal+,35,Sarah Taylor,,,2,5
+303,Normal+,35,John White,Sarah White,2024-11-12,2,
+304,Normal+,35,John Walker,,,2,
+305,Normal+,35,,,,2,
+401,Suite,55,Michael Wilson,,,3,4
+402,Suite,55,Sarah King,John King,2024-11-07,3,7
+403,Suite,55,John Lee,Linda Lee Sarah Lee,2024-11-12,3,
+404,Normal,20,Sarah Turner,,,2,
+405,Suite,55,,,,3,
+501,VIP,100,John Black,Sarah Black,2024-11-06,4,8
+502,VIP,100,Sarah Rivera,,,4,
+503,VIP,100,,,,4,
+601,Deluxe,75,Sarah Davis,,,3,10
+602,Deluxe,75,John Harris,Sarah Harris,2024-11-12,3,
+603,Deluxe,75,Michael Kim,,,3,
+604,Deluxe,75,,,,3,
+701,Penthouse,150,Jan Banasik,"Karol Bystrek Patrick Bajorski  Andre Baron ",2024-11-09,5,3
+702,Penthouse,150,,,,5,

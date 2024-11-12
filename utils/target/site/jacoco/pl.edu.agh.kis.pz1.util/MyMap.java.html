@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MyMap.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Modul na klasy uzytkowe</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1.util</a> &gt; <span class="el_source">MyMap.java</span></div><h1>MyMap.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1.util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * A class implementing the Map interface. It represents a data structure that stores key-value pairs,
+ * allowing for adding, removing, and accessing data by key.
+ *
+ * @param &lt;K&gt; The type of the key.
+ * @param &lt;V&gt; The type of the value.
+ */
+public class MyMap&lt;K, V&gt; implements Map&lt;K, V&gt; {
+    List&lt;K&gt; keys;
+    List&lt;V&gt; values;
+
+    /**
+     * Constructor that initializes an empty map.
+     * It creates empty lists for keys and values.
+     */
+<span class="fc" id="L21">    public MyMap() {</span>
+<span class="fc" id="L22">        keys = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L23">        values = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L24">    }</span>
+
+    /**
+     * Adds a key-value pair to the map. If the key already exists, its value is updated.
+     *
+     * @param key The key to be added or updated.
+     * @param value The value associated with the key.
+     * @return Returns true if the key was added to the map, or false if the value was updated.
+     */
+    @Override
+    public boolean put(K key, V value) {
+<span class="fc" id="L35">        int ix = keys.indexOf(key);</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if (ix == -1) { // No such key</span>
+<span class="fc" id="L37">            keys.add(key);</span>
+<span class="fc" id="L38">            values.add(value);</span>
+<span class="fc" id="L39">            return true;</span>
+        } else {
+<span class="nc" id="L41">            keys.set(ix, key);</span>
+<span class="nc" id="L42">            values.set(ix, value);</span>
+<span class="nc" id="L43">            return false;</span>
+        }
+    }
+
+    /**
+     * Returns the value associated with the given key, or null if the key does not exist.
+     *
+     * @param key The key (not null).
+     * @return The value associated with the key or null if the key does not exist.
+     */
+    @Override
+    public V get(K key) {
+<span class="fc" id="L55">        int ix = keys.indexOf(key);</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        if (ix == -1) {</span>
+<span class="nc" id="L57">            return null;</span>
+        }
+<span class="fc" id="L59">        return values.get(ix);</span>
+    }
+
+    /**
+     * Returns a list of all keys in the map.
+     *
+     * @return A list of keys in the map.
+     */
+    @Override
+    public List&lt;K&gt; keys() {
+<span class="fc" id="L69">        return new ArrayList&lt;&gt;(keys);</span>
+    }
+
+    /**
+     * Removes the key-value pair from the map based on the given key.
+     *
+     * @param key The key to be removed.
+     * @return Returns true if the key was removed, or false if the key does not exist.
+     */
+    @Override
+    public boolean remove(K key) {
+<span class="fc" id="L80">        int ix = keys.indexOf(key);</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        if (ix == -1) {</span>
+<span class="nc" id="L82">            return false;</span>
+        } else {
+<span class="fc" id="L84">            keys.remove(ix);</span>
+<span class="fc" id="L85">            values.remove(ix);</span>
+<span class="fc" id="L86">            return true;</span>
+        }
+    }
+
+    /**
+     * Checks if the given key exists in the map.
+     *
+     * @param key The key to check for existence.
+     * @return true if the key exists, false otherwise.
+     */
+    @Override
+    public boolean contains(K key) {
+<span class="fc" id="L98">        return keys.contains(key);</span>
+    }
+
+    /**
+     * Creates a textual representation of the map, returning all key-value pairs
+     * in the format &quot;key=value&quot;.
+     *
+     * @return The textual representation of the map.
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L109">        StringBuilder res = new StringBuilder();</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        for (K key : keys) {</span>
+<span class="nc" id="L111">            V value = values.get(keys.indexOf(key));</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">            if (value != null) {</span>
+<span class="nc" id="L113">                res.append(key).append(&quot;=&quot;).append(value).append(&quot;\n&quot;);</span>
+            } else {
+<span class="nc" id="L115">                res.append(key).append(&quot;=null\n&quot;);</span>
+            }
+<span class="nc" id="L117">        }</span>
+<span class="nc" id="L118">        return res.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
