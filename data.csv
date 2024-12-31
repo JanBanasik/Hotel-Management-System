@@ -7,7 +7,7 @@ nr_pokoju,opis,cena,GoscGlowny,DodatkowiGoscie,DataZameldowania,Pojemnosc,CzasTr
 202,Normal,20,Michael Green,,05.11.2024,2,9
 203,Normal,20,Sarah Adams,,06.11.2024,2,8
 204,Normal,20,Sarah Wilson,John Wilson,10.11.2024,2,1
-205,Normal,20,John Black,Sarah Black,10.11.2024,2,1
+205,Normal,20,John Black,Sarah Black,10.11.2024,1,1
 206,Normal,20,,,,2,
 301,Normal+,35,John Taylor,,10.11.2024,2,1
 302,Normal+,35,Sarah Taylor,,09.11.2024,2,5
@@ -18,13 +18,13 @@ nr_pokoju,opis,cena,GoscGlowny,DodatkowiGoscie,DataZameldowania,Pojemnosc,CzasTr
 402,Suite,55,Sarah King,Linda Lee Sarah Lee,07.11.2024,3,7
 403,Suite,55,John Lee,,10.11.2024,3,1
 404,Normal,20,,,,2,
-405,Suite,55,,Sarah Black,,3,
+405,Suite,55,Sarah White,Sarah Black,10.11.2024,3,
 501,VIP,100,John Black,,06.11.2024,4,8
 502,VIP,100,Sarah Rivera,,10.11.2024,4,1
-503,VIP,100,,Sarah Harris,,4,
+503,VIP,100,Kamala Harris,Sarah Harris,10.11.2024,4,
 601,Deluxe,75,Sarah Davis,,04.11.2024,3,10
 602,Deluxe,75,John Harris,,10.11.2024,3,1
 603,Deluxe,75,Michael Kim,Linda Carter Alex B,10.11.2024,3,1
-604,Deluxe,75,,,10.11.2024,3,1
+604,Deluxe,75,,,,3,
 701,Penthouse,150,Michael Carter,,10.11.2024,5,4
 702,Penthouse,150,,,,5,

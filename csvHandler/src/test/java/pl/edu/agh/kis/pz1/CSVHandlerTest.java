@@ -1,6 +1,8 @@
 package pl.edu.agh.kis.pz1;
 
 import pl.edu.agh.kis.pz1.util.Map;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,13 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CSVHandlerTest{
     @Test
-    void returnsAnything(){
+    void returnsAnything() throws IOException {
         Map<String, ArrayList<String>> r;
         r = CSVHandler.readAndReturn("C:\\Users\\jan_b\\OneDrive\\Pulpit\\Zadanie1PZ1\\multi-module\\data.csv");
         assertNotNull(r);
     }
     @Test
-    void getValues(){
+    void getValues() throws IOException {
         Map<String, ArrayList<String>> r;
         r = CSVHandler.readAndReturn("C:\\Users\\jan_b\\OneDrive\\Pulpit\\Zadanie1PZ1\\multi-module\\data.csv");
         for(String key: r.keys()){

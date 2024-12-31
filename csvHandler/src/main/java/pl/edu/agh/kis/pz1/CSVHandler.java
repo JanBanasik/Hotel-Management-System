@@ -40,7 +40,7 @@ public class CSVHandler {
      * @return a map containing room data, where keys are room numbers and values
      *         are lists containing the details of each room
      */
-    public static Map<String, ArrayList<String>> readAndReturn(String filePath) {
+    public static Map<String, ArrayList<String>> readAndReturn(String filePath) throws IOException {
         Map<String, ArrayList<String>> roomData = new MyMap<>();
         try (
                 Reader reader = new FileReader(filePath);
@@ -57,8 +57,10 @@ public class CSVHandler {
 
         } catch (FileNotFoundException e) {
             System.out.println("Couldn't find the file: " + filePath);
+            System.exit(1);
         } catch (IOException e) {
             System.out.println("Something went wrong while reading the file.");
+            System.exit(1);
         }
 
         return roomData;
@@ -74,10 +76,9 @@ public class CSVHandler {
     private static ArrayList<String> getRoom(CSVRecord csvRecord) {
         String opis = csvRecord.get(1) != null ? csvRecord.get(1) : "";
         String cena = csvRecord.get(2) != null ? csvRecord.get(2) : "";
-        String goscGlowny = csvRecord.get(3) != null ? csvRecord.get(3) : "";
-        String goscieDodatkowi = csvRecord.get(4) != null ? csvRecord.get(4) : "";
-        String dataZameldowania = csvRecord.size() > 5 && csvRecord.get(5) != null ?
-                csvRecord.get(5) : "";
+        String goscGlowny = csvRecord.get(3);
+        String goscieDodatkowi = csvRecord.get(4);
+        String dataZameldowania = csvRecord.get(5);
         String pojemnosc = csvRecord.get(6);
         String czasTrwaniaPobytu = csvRecord.get(7);
 

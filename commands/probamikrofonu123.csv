@@ -1,0 +1,30 @@
+nr_pokoju,opis,cena,GoscGlowny,DodatkowiGoscie,DataZameldowania,Pojemnosc,CzasTrwaniaPobytu
+101,VIP,100,John Smith,Sarah Smith,2024-11-10,4,4
+102,VIP,100,Sarah Johnson,,2024-11-10,4,1
+103,Deluxe,75,John Thompson,Linda Thompson Alex A,2024-11-08,3,6
+104,VIP,100,,,,4,
+201,Normal,20,John Brown,Sarah Brown,2024-11-10,2,1
+202,Normal,20,Michael Green,,2024-11-05,2,9
+203,Normal,20,Sarah Adams,,2024-11-06,2,8
+204,Normal,20,Sarah Wilson,John Wilson,2024-11-10,2,1
+205,Normal,20,John Black,Sarah Black,2024-11-10,1,1
+206,Normal,20,,,,2,
+301,Normal+,35,John Taylor,,2024-11-10,2,1
+302,Normal+,35,Sarah Taylor,,2024-11-09,2,5
+303,Normal+,35,John White,Sarah White,2024-11-10,2,1
+304,Normal+,35,John Walker,,2024-11-10,2,1
+305,Normal+,35,,,,2,
+401,Suite,55,Michael Wilson,John King,2024-11-10,3,4
+402,Suite,55,Sarah King,Linda Lee Sarah Lee,2024-11-07,3,7
+403,Suite,55,John Lee,,2024-11-10,3,1
+404,Normal,20,,,,2,
+405,Suite,55,Sarah White,Sarah Black,2024-11-10,3,
+501,VIP,100,John Black,,2024-11-06,4,8
+502,VIP,100,Sarah Rivera,,2024-11-10,4,1
+503,VIP,100,Kamala Harris,Sarah Harris,2024-11-10,4,
+601,Deluxe,75,Sarah Davis,,2024-11-04,3,10
+602,Deluxe,75,John Harris,,2024-11-10,3,1
+603,Deluxe,75,Michael Kim,Linda Carter Alex B,2024-11-10,3,1
+604,Deluxe,75,,,,3,
+701,Penthouse,150,Michael Carter,,2024-11-10,5,4
+702,Penthouse,150,,,,5,

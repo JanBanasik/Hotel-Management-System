@@ -62,4 +62,26 @@ class MyMapTest {
         l1.remove(0);
         assertNotEquals(l1, m1.keys());
     }
+    @Test
+    void anotherTest(){
+        m1.put(1, 3);
+        m1.put(1,2);
+        assertEquals(2, m1.get(1));
+    }
+
+    @Test
+    void returnsNullTest(){
+        assertNull(m1.get(100000));
+    }
+
+    @Test
+    void removeNonExistentKeyTest() {
+        assertFalse(m1.remove(-50));
+    }
+
+    @Test
+    void toStringTest() {
+        Map<Integer, Integer> mT = new MyMap<>();
+        assertEquals(0, mT.toString().length());
+    }
 }

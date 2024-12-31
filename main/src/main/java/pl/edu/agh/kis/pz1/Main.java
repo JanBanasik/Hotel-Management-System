@@ -2,6 +2,7 @@ package pl.edu.agh.kis.pz1;
 
 import pl.edu.agh.kis.pz1.util.Map;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
@@ -23,7 +24,7 @@ public class Main {
      * @throws InstantiationException If the command cannot be instantiated.
      * @throws IllegalAccessException If access to the command method is illegal.
      */
-    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, IOException {
 
         // Retrieve the dictionary of available commands.
         Map<String, Command> commands = CommandDictionary.getCommandDictionary();
@@ -41,11 +42,13 @@ public class Main {
             // Prompt for a command from the user.
             System.out.print("\n$Enter command: ");
             String c = sc.nextLine();
+            c = c.toLowerCase();
             System.out.println();
-
+            String delim = "-------------------------------------------------------------------";
+            System.out.print(delim);
             // Check if the command is "exit" and break the loop if true.
             if (c.equals("exit")) {
-                System.out.println("Executing command: " + c);
+                System.out.println("Executing command: " + c + delim);
                 break;
             }
 
@@ -55,7 +58,7 @@ public class Main {
                 System.out.println("Invalid command!");
             } else {
                 // Print the command and execute it on the hotel object.
-                System.out.println("Executing command: " + c);
+                System.out.println("Executing command: " + c + delim);
                 commands.get(c).execute(hotel);
             }
         }

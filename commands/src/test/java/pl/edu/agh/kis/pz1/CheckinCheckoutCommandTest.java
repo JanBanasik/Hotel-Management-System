@@ -2,7 +2,8 @@ package pl.edu.agh.kis.pz1;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
+import java.io.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CheckinCheckoutCommandTest {
@@ -11,7 +12,7 @@ class CheckinCheckoutCommandTest {
     }
 
     @Test
-    void test1(){
+    void test1() throws IOException {
         String filePath = "C:\\Users\\jan_b\\OneDrive\\Pulpit\\Zadanie1PZ1\\multi-module\\data.csv";
         Hotel hotel = new Hotel(filePath);
         provideInput("101");
@@ -23,4 +24,53 @@ class CheckinCheckoutCommandTest {
         assertEquals("John Smith", hotel.get("101").goscGlowny);
     }
 
+    @Test
+    void testBadCheckin() throws IOException {
+        String filePath = "C:\\Users\\jan_b\\OneDrive\\Pulpit\\Zadanie1PZ1\\multi-module\\data.csv";
+        Hotel hotel = new Hotel(filePath);
+
+        CheckinCommand checkin = new CheckinCommand();
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+
+
+        provideInput("-5\n");
+
+        System.setOut(ps);
+        checkin.execute(hotel);
+        String output = baos.toString();
+
+        System.out.println(output);
+
+        System.out.println("Przechwycone dane:");
+        assertEquals("Enterroomnumber:Invalidroomnumber!", output.replaceAll("\\s+", ""));
+
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+    }
+
+    @Test
+    void testBadCheckin2() throws IOException {
+        String filePath = "C:\\Users\\jan_b\\OneDrive\\Pulpit\\Zadanie1PZ1\\multi-module\\data.csv";
+        Hotel hotel = new Hotel(filePath);
+
+        CheckinCommand checkin = new CheckinCommand();
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+
+
+        provideInput("101\n");
+
+        System.setOut(ps);
+        checkin.execute(hotel);
+        String output = baos.toString();
+
+        System.out.println(output);
+
+        System.out.println("Przechwycone dane:");
+        assertEquals("Enterroomnumber:Thisroomisalreadyoccupiedby:JohnSmith", output.replaceAll("\\s+", ""));
+
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+    }
 }

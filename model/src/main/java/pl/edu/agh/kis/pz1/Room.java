@@ -76,7 +76,7 @@ public class Room {
     public String toString() {
         String res = "";
         res += "Opis: " + opis + "\n";
-        res += "Cena: " + cena + "\n" +"$";
+        res += "Cena: " + cena + "\n";
         res += "Gosc glowny: " + goscGlowny + "\n";
         res += "Goscie dodatkowi: " + goscieDodatkowi + "\n";
         res += "Data zameldowania: " + (dataZameldowania == null ? "" : dataZameldowania) + "\n";

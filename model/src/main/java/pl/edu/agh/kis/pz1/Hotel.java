@@ -2,6 +2,8 @@ package pl.edu.agh.kis.pz1;
 
 import pl.edu.agh.kis.pz1.util.Map;
 import pl.edu.agh.kis.pz1.util.MyMap;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -22,14 +24,14 @@ public class Hotel {
      *
      * @param filePath the path to the CSV file containing the room data
      */
-    public Hotel(String filePath) {
+    public Hotel(String filePath) throws IOException {
         Map<String, ArrayList<String>> temp;
         temp = CSVHandler.readAndReturn(filePath);
         for (String key : temp.keys()) {
             Room currRoom = new Room(
                     temp.get(key).get(0), temp.get(key).get(1),
                     temp.get(key).get(2), temp.get(key).get(3),
-                    (temp.get(key).get(3).isEmpty() ? null : DateParser.convert(temp.get(key).get(4))),
+                    (temp.get(key).get(2).isEmpty() ? null : DateParser.convert(temp.get(key).get(4))),
                     temp.get(key).get(5),
                     temp.get(key).get(6)
             );

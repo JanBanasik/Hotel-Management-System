@@ -2,19 +2,15 @@ package pl.edu.agh.kis.pz1;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.FileDescriptor;
-import java.io.FileOutputStream;
+import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 class ListCommandTest {
 
     @Test
-    void execute() {
-        String filePath = "C:\\Users\\jan_b\\OneDrive\\Pulpit\\Zadanie1PZ1\\multi-module\\data.csv";
+    void execute() throws IOException {
+        String filePath = "C:\\Users\\jan_b\\OneDrive\\Pulpit\\Zadanie1PZ1\\multi-module\\testowyd.csv";
 
         Hotel hotel = new Hotel(filePath);
         ListCommand command = new ListCommand();
@@ -36,7 +32,7 @@ class ListCommandTest {
         System.out.println("Wynik hotel.toString():");
         System.out.println(hotel.toString());
 
-        assertEquals(output.replaceAll("\\s+", ""), hotel.toString().replaceAll("\\s+", ""));
+        assertEquals("Room101Opis:VIPCena:100Goscglowny:JohnSmithGosciedodatkowi:SarahSmithDatazameldowania:2024-11-10Pojemnosc:4Czastrwaniapobytu:4Planowanadatawyjazdu:2024-11-14", output.replaceAll("\\s+", ""));
 
         System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
     }

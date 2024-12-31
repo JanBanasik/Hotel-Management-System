@@ -32,7 +32,6 @@ public class CheckinCommand extends Command {
         String roomNumber = sc.nextLine();
 
         // Validate room number
-        System.out.println(hotel.rooms.keys());
         if (!hotel.rooms.contains(roomNumber)) {
             System.out.println("Invalid room number!");
             return;
@@ -44,31 +43,36 @@ public class CheckinCommand extends Command {
         // Get main guest's name
         String goscGlowny;
         do {
-            System.out.println("Podaj goscia głownego:");
+            System.out.println("Enter main guest name:");
             goscGlowny = sc.nextLine();
         } while (goscGlowny.isEmpty());
 
         // Get additional guests
         StringBuilder goscieDodatkowi = new StringBuilder();
-        System.out.println("Podaj gosci dodatkowych lub q jezeli chcesz przerwac");
         String temp;
-        for (int i = 0; i < Integer.parseInt(hotel.get(roomNumber).pojemnosc) - 1; i++) {
-            System.out.println("Podaj goscia dodatkowego: ");
-            temp = sc.nextLine();
-            if (temp.equals("q") || temp.isEmpty()) break;
-            goscieDodatkowi.append(temp).append(" ");
+        int n = Integer.parseInt(hotel.get(roomNumber).pojemnosc) - 1;
+
+        if(n > 0){
+            System.out.println("Enter additional guests names or q if You want to break");
+            for (int i = 0; i < n; i++) {
+                System.out.println("Enter additional guest name: ");
+                temp = sc.nextLine();
+                if (temp.equals("q") || temp.isEmpty()) break;
+                goscieDodatkowi.append(temp).append(" ");
+            }
         }
+
 
         // Update room details
         hotel.get(roomNumber).goscGlowny = goscGlowny;
         hotel.get(roomNumber).goscieDodatkowi = goscieDodatkowi.toString().trim();
 
         // Get check-in date
-        System.out.println("Podaj date zameldowania (w formacie dd.mm.yyyy):");
+        System.out.println("Enter the arrival date (format dd.mm.yyyy):");
         hotel.get(roomNumber).dataZameldowania = DateParser.convert(sc.nextLine());
 
         // Get stay duration
-        System.out.println("Podaj ilosc dni pobytu: ");
+        System.out.println("Enter the number of days of a stay: ");
         hotel.get(roomNumber).czasTrwaniaPobytu = sc.nextLine();
     }
 }
